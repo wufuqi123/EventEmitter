@@ -1,0 +1,3 @@
+rootProject.name = "EventEmitter"
+include ':app'
+include ':EventEmitter'
