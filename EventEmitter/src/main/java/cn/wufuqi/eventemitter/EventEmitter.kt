@@ -21,6 +21,8 @@ open class EventEmitter {
 
     private val mEventMaps = mutableMapOf<String, MutableList<ListenerBean>>()
 
+    private val mEmitNames: MutableList<String> = mutableListOf()
+
 
     /**
      * 获取不为null的 事件列表
@@ -65,6 +67,7 @@ open class EventEmitter {
      * @param params 携带的参数
      */
     fun emit(eventName: String, vararg params: Any) {
+
         val funcs = mEventMaps[eventName]
         val paramList = mutableListOf<Any>()
         for (i in params.indices) {
@@ -80,7 +83,9 @@ open class EventEmitter {
         removeFuns.forEach {
             funcs?.remove(it)
         }
-
+        if (!mEmitNames.contains(eventName)) {
+            mEmitNames.add(eventName)
+        }
     }
 
 
@@ -133,6 +138,16 @@ open class EventEmitter {
     }
 
     /**
+     * 获取全部发送的事件名
+     */
+    fun emitNames(): MutableList<String> {
+        val em = mutableListOf<String>()
+        em.addAll(mEmitNames)
+        return em
+    }
+
+
+    /**
      * 通过事件名，获取注册的事件数量
      * @param eventName 事件名
      */
@@ -150,6 +165,7 @@ open class EventEmitter {
         }
         return count
     }
+
     /**
      * 事件类型
      */
@@ -158,13 +174,18 @@ open class EventEmitter {
          * 重复触发
          */
         REPEAT,
+
         /**
          * 触发一次
          */
         ONE
     }
+
     /**
      * 事件对象
      */
-    private data class ListenerBean(var type: EventType, var func: (param: MutableList<Any>) -> Unit)
+    private data class ListenerBean(
+        var type: EventType,
+        var func: (param: MutableList<Any>) -> Unit
+    )
 }
