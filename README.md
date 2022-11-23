@@ -8,7 +8,7 @@
     请在 build.gradle 下添加依赖。
 
     ``` 
-        implementation 'cn.wufuqi:EventEmitter:1.0.2'
+        implementation 'cn.wufuqi:EventEmitter:1.0.3'
     ```
 
 
@@ -100,21 +100,29 @@
             event.offAll()
         ```
 
-6. 获取全部事件名
+6. 获取全部注册事件名
 
-    获取事件名列表 list<String> 
+    获取  on once 方法去注册的事件名，并未被销毁掉的事件名
 
     ```
         event.eventNames()
     ```
 
-7. 通过事件名，获取注册的事件数量
+7. 获取全部发送的事件名
+
+    获取  emit 方法发送的事件名，并未被销毁掉的事件名
+
+    ```
+        event.emitNames()
+    ```
+
+8. 通过事件名，获取注册的事件数量
 
     ```
         event.listenerCount("事件名")
     ```
 
-8. 获取注册的全部事件数量
+9. 获取注册的全部事件数量
 
      ```
         event.listenerCountAll()

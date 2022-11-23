@@ -105,6 +105,9 @@ open class EventEmitter {
         removeFuns.forEach {
             funcs?.remove(it)
         }
+        if (mEventMaps[eventName]?.isEmpty() == true) {
+            mEmitNames.remove(eventName)
+        }
     }
 
     /**
@@ -112,6 +115,7 @@ open class EventEmitter {
      * @param eventName 事件名
      */
     fun off(eventName: String) {
+        mEmitNames.remove(eventName)
         mEventMaps[eventName]?.clear()
     }
 
@@ -122,6 +126,7 @@ open class EventEmitter {
         mEventMaps.forEach {
             off(it.key)
         }
+        mEmitNames.clear()
         mEventMaps.clear()
     }
 
