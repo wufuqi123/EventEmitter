@@ -1,5 +1,8 @@
 package cn.wufuqi.eventemitter
 
+import java.util.Hashtable
+import java.util.Vector
+
 /**
  * 事件  发送订阅
  *
@@ -19,9 +22,9 @@ open class EventEmitter {
     }
 
 
-    private val mEventMaps = mutableMapOf<String, MutableList<ListenerBean>>()
+    private val mEventMaps = Hashtable<String, MutableList<ListenerBean>>()
 
-    private val mEmitNames: MutableList<String> = mutableListOf()
+    private val mEmitNames: Vector<String> = Vector()
 
 
     /**

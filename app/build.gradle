@@ -5,7 +5,7 @@ plugins {
 
 android {
     compileSdkVersion 33
-    buildToolsVersion "32.0.0"
+    buildToolsVersion "33.0.0"
 
     defaultConfig {
         applicationId "cn.wufuqi.test"
@@ -43,6 +43,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation 'cn.wufuqi:EventEmitter:1.0.3'
+    implementation 'cn.wufuqi:EventEmitter:1.0.4'
 //    implementation project(path: ':EventEmitter')
 }

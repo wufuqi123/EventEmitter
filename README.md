@@ -8,7 +8,7 @@
     请在 build.gradle 下添加依赖。
 
     ``` 
-        implementation 'cn.wufuqi:EventEmitter:1.0.3'
+        implementation 'cn.wufuqi:EventEmitter:1.0.4'
     ```
 
 
